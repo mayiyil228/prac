@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping Cart</title>
+
+    <style>
+        .products {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .product {
+            border: 1px solid black;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>ABC Store</h1>
+
+<div class="products">
+
+    <div class="product">
+        <h3>Laptop</h3>
+
+        <select id="laptop">
+            <option>HP Laptop</option>
+            <option>Dell Laptop</option>
+            <option>Lenovo Laptop</option>
+        </select>
+
+        <button onclick="add('Laptop', laptop.value)">
+            Add to Cart
+        </button>
+    </div>
+
+    <div class="product">
+        <h3>Mobile</h3>
+
+        <select id="mobile">
+            <option>Samsung</option>
+            <option>iPhone</option>
+            <option>OnePlus</option>
+        </select>
+
+        <button onclick="add('Mobile', mobile.value)">
+            Add to Cart
+        </button>
+    </div>
+
+    <div class="product">
+        <h3>Headphones</h3>
+
+        <select id="headphones">
+            <option>Boat</option>
+            <option>Sony</option>
+            <option>JBL</option>
+        </select>
+
+        <button onclick="add('Headphones', headphones.value)">
+            Add to Cart
+        </button>
+    </div>
+
+</div>
+
+<h2>Cart</h2>
+<ul id="cart"></ul>
+
+<script>
+function add(product, model) {
+    let item = document.createElement("li");
+    item.innerHTML = product + " - " + model;
+
+    document.getElementById("cart").appendChild(item);
+}
+</script>
+
+<footer>
+    <p>&copy; 2026 ABC Store</p>
+</footer>
+
+</body>
+</html>
