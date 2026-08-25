@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Login</h2>
+
+<form onsubmit="return validate()">
+
+    Username:
+    <input type="text" id="username">
+    <span id="userError" class="error"></span>
+    <br><br>
+
+    Password:
+    <input type="password" id="password">
+    <span id="passError" class="error"></span>
+    <br><br>
+
+    <button type="submit">Sign In</button>
+
+</form>
+
+<br>
+<a href="create.html">Create a New Account</a>
+
+<script>
+function validate() {
+    let valid = true;
+
+    document.getElementById("userError").innerHTML = "";
+    document.getElementById("passError").innerHTML = "";
+
+    if (document.getElementById("username").value == "") {
+        document.getElementById("userError").innerHTML =
+            " Username is required";
+        valid = false;
+    }
+
+    if (document.getElementById("password").value == "") {
+        document.getElementById("passError").innerHTML =
+            " Password is required";
+        valid = false;
+    }
+
+    return valid;
+}
+</script>
+
+</body>
+</html>
