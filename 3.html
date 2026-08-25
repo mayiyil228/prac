@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Account</title>
+
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Create User Account</h2>
+
+<form onsubmit="return validate()">
+
+    Username:
+    <input type="text" id="username">
+    <span id="userError" class="error"></span>
+    <br><br>
+
+    Password:
+    <input type="password" id="password">
+    <span id="passError" class="error"></span>
+    <br><br>
+
+    Confirm Password:
+    <input type="password" id="confirm">
+    <span id="confirmError" class="error"></span>
+    <br><br>
+
+    <button type="submit">Create Account</button>
+
+</form>
+
+<script>
+function validate() {
+    let valid = true;
+
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+    let confirm = document.getElementById("confirm").value;
+
+    document.getElementById("userError").innerHTML = "";
+    document.getElementById("passError").innerHTML = "";
+    document.getElementById("confirmError").innerHTML = "";
+
+    if (username == "") {
+        document.getElementById("userError").innerHTML =
+            " Username is required";
+        valid = false;
+    }
+
+    let strongPassword =
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$/;
+
+    if (password == "") {
+        document.getElementById("passError").innerHTML =
+            " Password is required";
+        valid = false;
+    }
+    else if (!strongPassword.test(password)) {
+        document.getElementById("passError").innerHTML =
+            "Minimum 8 characters, uppercase, lowercase and number required";
+        valid = false;
+    }
+
+    if (confirm == "") {
+        document.getElementById("confirmError").innerHTML =
+            " Confirm password";
+        valid = false;
+    }
+    else if (password != confirm) {
+        document.getElementById("confirmError").innerHTML =
+            " Passwords do not match";
+        valid = false;
+    }
+
+    return valid;
+}
+</script>
+
+</body>
+</html>
