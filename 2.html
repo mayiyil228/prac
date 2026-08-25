@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Account</title>
+
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Create User Account</h2>
+
+<form onsubmit="return validate()">
+
+    Username:
+    <input type="text" id="username">
+    <span id="userError" class="error"></span>
+    <br><br>
+
+    Password:
+    <input type="password" id="password">
+    <span id="passError" class="error"></span>
+    <br><br>
+
+    Date of Birth:
+    <input type="date" id="dob">
+    <span id="dobError" class="error"></span>
+    <br><br>
+
+    <button type="submit">Create Account</button>
+
+</form>
+
+<script>
+function validate() {
+    let valid = true;
+
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+    let dob = document.getElementById("dob").value;
+
+    document.getElementById("userError").innerHTML = "";
+    document.getElementById("passError").innerHTML = "";
+    document.getElementById("dobError").innerHTML = "";
+
+    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (username == "") {
+        document.getElementById("userError").innerHTML =
+            " Username is required";
+        valid = false;
+    }
+    else if (!emailPattern.test(username)) {
+        document.getElementById("userError").innerHTML =
+            " Enter a valid email";
+        valid = false;
+    }
+
+    if (password == "") {
+        document.getElementById("passError").innerHTML =
+            " Password is required";
+        valid = false;
+    }
+
+    if (dob == "") {
+        document.getElementById("dobError").innerHTML =
+            " Date of Birth is required";
+        valid = false;
+    }
+
+    return valid;
+}
+</script>
+
+</body>
+</html>
